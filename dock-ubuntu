@@ -1,0 +1,8 @@
+FROM ubuntu:16.04
+RUN apt-get update -y; \
+apt-get install nginx -y; \
+ufw allow 'Nginx HTTP'; \
+echo 'Hi, I am in your container' > /var/www/html/index.html; \
+systemctl enable nginx.service;
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
